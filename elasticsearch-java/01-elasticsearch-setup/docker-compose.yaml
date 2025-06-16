@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.18.0
+    container_name: es-course-elasticsearch
+    ports:
+    - 9206:9200
+    environment:
+    - discovery.type=single-node
+    # Security has been disabled for simplicity during learning.
+    - xpack.security.enabled=false
+    - xpack.security.http.ssl.enabled=false
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    networks:
+      - es-network
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.18.0
+    container_name: es-course-kibana
+    ports:
+    - 5606:5601
+    environment:
+    - ELASTICSEARCH_HOSTS=http://es-course-elasticsearch:9200
+    networks:
+      - es-network
+networks:
+  es-network:
+      name: es-course-network
+      driver: bridge
+volumes:
+  es-data:
+    name: es-course-data

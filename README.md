@@ -1,6 +1,6 @@
-# Spring playground
+# Elasticsearch playground
 
-This repository contains **code** written following tutorials and developing projects while learning the [Elasticsearch](https://www.elastic.co/elasticsearch).
+This repository contains **code** written following tutorials and developing projects while studying [Elasticsearch](https://www.elastic.co/elasticsearch).
 
 ## Code Tutorials and Courses
 
