@@ -1,0 +1,76 @@
+services:
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.18.0
+    container_name: es-course-env2-es01
+    ports:
+    - 9206:9200
+    environment:
+    - node.name=es01
+    - cluster.name=es-course-cluster
+    - cluster.initial_master_nodes=es01,es02,es03
+    - discovery.seed_hosts=es02,es03
+    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    # Security has been disabled for simplicity during learning.
+    - xpack.security.enabled=false
+    - xpack.security.http.ssl.enabled=false
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - es-network
+  es02:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.18.0
+    container_name: es-course-env2-es02
+    ports:
+    - 9207:9200
+    environment:
+    - node.name=es02
+    - cluster.name=es-course-cluster
+    - cluster.initial_master_nodes=es01,es02,es03
+    - discovery.seed_hosts=es01,es03
+    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    # Security has been disabled for simplicity during learning.
+    - xpack.security.enabled=false
+    - xpack.security.http.ssl.enabled=false
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - es-network
+  es03:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.18.0
+    container_name: es-course-env2-es03
+    ports:
+    - 9208:9200
+    environment:
+    - node.name=es03
+    - cluster.name=es-course-cluster
+    - cluster.initial_master_nodes=es01,es02,es03
+    - discovery.seed_hosts=es01,es02
+    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    # Security has been disabled for simplicity during learning.
+    - xpack.security.enabled=false
+    - xpack.security.http.ssl.enabled=false
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - es-network
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.18.0
+    ports:
+    - 5606:5601
+    environment:
+    - ELASTICSEARCH_HOSTS=["http://es-course-env2-es01:9200","http://es-course-env2-es02:9200","http://es-course-env2-es03:9200"]
+    networks:
+      - es-network
+networks:
+  es-network:
+      name: es-course-env2-network
+      driver: bridge
