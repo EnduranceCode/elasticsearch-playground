@@ -28,3 +28,15 @@ When the environment is no longer needed, bring it down with the following comma
 
     cd env2-multiple-node
     docker compose down
+
+### env3-master-node
+
+The folder [`env3-master-node`](./env3-master-node/) contains the docker environment setup for a multiple node Elasticsearch cluster with a initial master node defined. To setup the environment, execute the following commands:
+
+    cd env3-master-node
+    docker compose up -d
+
+When the environment is no longer needed, bring it down with the following command:
+
+    cd env3-master-node
+    docker compose down
