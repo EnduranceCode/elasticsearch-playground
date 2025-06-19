@@ -40,3 +40,15 @@ When the environment is no longer needed, bring it down with the following comma
 
     cd env3-master-node
     docker compose down
+
+### env4-node-roles
+
+The folder [`env4-node-roles`](./env4-node-roles/) contains the docker environment setup for a multiple node Elasticsearch cluster with a initial master node and node roles defined. To setup the environment, execute the following commands:
+
+    cd env4-node-roles
+    docker compose up -d
+
+When the environment is no longer needed, bring it down with the following command:
+
+    cd env4-node-roles
+    docker compose down
