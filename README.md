@@ -4,6 +4,6 @@ This repository contains **code** written following tutorials and developing pro
 
 ## Code Tutorials and Courses
 
-### Elasticsearch Masterclass For Java Spring Developers
+### Elasticsearch Masterclass for Java Spring Developers
 
-The folder [`elasticsearch-java`](./elasticsearch-java) contains the code written while taking the course [Elasticsearch Masterclass For Java Spring Developers](https://www.udemy.com/course/elasticsearch-java/) which is presented by [Vinoth Selvaraj](https://www.vinsguru.com/vinoth-selvaraj/).
+The folder [`elasticsearch-java`](./elasticsearch-java) contains the code written while taking the course [Elasticsearch Masterclass for Java Spring Developers](https://www.udemy.com/course/elasticsearch-java/) which is presented by [Vinoth Selvaraj](https://www.vinsguru.com/vinoth-selvaraj/).
