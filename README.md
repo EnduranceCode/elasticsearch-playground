@@ -2,6 +2,11 @@
 
 This repository contains **code** written following tutorials and developing projects while studying [Elasticsearch](https://www.elastic.co/elasticsearch).
 
+## Table of Contents
+
+1. [Code Tutorials and Courses](#code-tutorials-and-courses)
+    1. [Elasticsearch Masterclass for Java Spring Developers](#elasticsearch-masterclass-for-java-spring-developers)
+
 ## Code Tutorials and Courses
 
 ### Elasticsearch Masterclass for Java Spring Developers
